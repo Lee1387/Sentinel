@@ -1,0 +1,31 @@
+{
+  "name": "sentinel",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sentinel Discord utility bot",
+  "type": "module",
+  "packageManager": "pnpm@10.28.2",
+  "engines": {
+    "node": ">=22 <26",
+    "pnpm": ">=10.28.2"
+  },
+  "scripts": {
+    "dev": "tsx watch -r dotenv/config src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node --env-file-if-exists=.env --enable-source-maps dist/index.js",
+    "deploy:dev": "tsx -r dotenv/config src/scripts/deployCommands.ts guild",
+    "deploy:global": "tsx -r dotenv/config src/scripts/deployCommands.ts global",
+    "check": "biome check . && tsc -p tsconfig.json --noEmit",
+    "fix": "biome check --write ."
+  },
+  "dependencies": {
+    "discord.js": "14.25.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.14",
+    "@types/node": "^25.2.2",
+    "dotenv": "^17.2.4",
+    "tsx": "^4.21.0",
+    "typescript": "5.9.3"
+  }
+}
